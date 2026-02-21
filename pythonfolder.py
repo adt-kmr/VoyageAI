@@ -221,16 +221,14 @@ jupyter notebook
 
 ---
 
-## 👤 Author
+##  Author
 **Your Name** · [LinkedIn](https://linkedin.com) · [GitHub](https://github.com)
 """
 with open("README.md", "w") as f:
     f.write(readme)
-print("✅ README.md created")
+print(" README.md created")
 
-# ─────────────────────────────────────────────
 # 7.  src/ HELPER MODULE BANAO
-# ─────────────────────────────────────────────
 clustering_utils = '''"""
 src/clustering_utils.py
 Reusable helper functions for all clustering notebooks.
@@ -261,7 +259,7 @@ def evaluate_clustering(X, labels, algo_name: str) -> dict:
         metrics["davies_bouldin"]   = davies_bouldin_score(X[mask], labels[mask])
         metrics["calinski_harabasz"]= calinski_harabasz_score(X[mask], labels[mask])
 
-    print(f"\\n📊 {algo_name} Metrics")
+    print(f"\\n{algo_name} Metrics")
     print(f"  Silhouette Score       : {metrics.get('silhouette', 'N/A'):.4f}")
     print(f"  Davies-Bouldin Score   : {metrics.get('davies_bouldin', 'N/A'):.4f}")
     print(f"  Calinski-Harabasz Score: {metrics.get('calinski_harabasz', 'N/A'):.4f}")
@@ -282,16 +280,16 @@ def plot_clusters_2d(X_2d, labels, title: str, save_path: str = None):
     plt.tight_layout()
     if save_path:
         plt.savefig(save_path, dpi=150)
-        print(f"  💾 Plot saved → {save_path}")
+        print(f"  Plot saved → {save_path}")
     plt.show()
 '''
 
 with open("src/clustering_utils.py", "w") as f:
     f.write(clustering_utils)
-print("✅ src/clustering_utils.py created")
+print("src/clustering_utils.py created")
 
 print("\n" + "="*50)
-print("🎉 PROJECT RESTRUCTURED SUCCESSFULLY!")
+print(" PROJECT RESTRUCTURED SUCCESSFULLY!")
 print("="*50)
 print("\nNext steps:")
 print("  1. cd into AIPROJECT folder")
