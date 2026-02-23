@@ -235,3 +235,77 @@ plt.legend(title='Cluster')
 plt.grid(True, alpha=0.3)
 plt.show()
 
+
+
+
+
+
+# Cluster Distribution
+unique, counts = np.unique(cluster_labels, return_counts=True)
+
+#  Save Results
+end_time = time.time()
+execution_time = end_time - start_time
+n_clusters = len(unique)
+sample_idx = np.random.choice(len(X), size=min(10000, len(X)), replace=False)
+if n_clusters < 2:
+    sil_score = None
+else:
+    sil_score = silhouette_score(X.iloc[sample_idx], cluster_labels[sample_idx])
+# Print summary metrics
+print(f'Number of Clusters: {n_clusters}')
+if sil_score is not None:
+    print(f'Silhouette Score: {sil_score:.4f}')
+else:
+    print('Silhouette Score: N/A')
+for cluster, count in zip(unique, counts):
+    print(f'Cluster {cluster}: {count} samples ({count/len(X)*100:.2f}%)')
+print(f'Execution Time: {execution_time:.2f} seconds')
+X['Cluster'] = cluster_labels
+X.to_csv('../results/csv/hierarchical_results.csv', index=False)
+
+print('HIERARCHICAL CLUSTERING FINAL SUMMARY')
+print(f'Linkage Method (Auto-selected): {best_linkage}')
+print(f'Optimal Clusters (Auto-selected): {best_k}')
+print(f'Silhouette Score: {final_sil:.4f}')
+
+# Silhouette Score Comparison - Train vs Test
+from sklearn.metrics import silhouette_score
+import matplotlib.pyplot as plt
+
+SAMPLE_SIZE = 5000
+
+# Train sample
+train_idx = np.random.choice(len(X_train), size=min(SAMPLE_SIZE, len(X_train)), replace=False)
+X_train_sample = X_train.iloc[train_idx]
+
+# Test sample
+test_idx = np.random.choice(len(X_test), size=min(SAMPLE_SIZE, len(X_test)), replace=False)
+X_test_sample = X_test.iloc[test_idx]
+
+# Linkage sirf sample pe compute karo
+linkage_train = linkage(X_train_sample, method=best_linkage)
+linkage_test = linkage(X_test_sample, method=best_linkage)
+
+# Labels
+train_labels_sample = fcluster(linkage_train, best_k, criterion='maxclust')
+test_labels_sample = fcluster(linkage_test, best_k, criterion='maxclust')
+
+# Silhouette scores
+train_score = silhouette_score(X_train_sample, train_labels_sample)
+test_score = silhouette_score(X_test_sample, test_labels_sample)
+
+scores = [train_score, test_score]
+types = ['Train', 'Test']
+
+plt.figure(figsize=(6, 4))
+bars = plt.bar(types, scores, color=['skyblue', 'salmon'])
+plt.title('Silhouette Score Comparison - Train vs Test')
+plt.ylabel('Silhouette Score')
+for bar, score in zip(bars, scores):
+    plt.text(bar.get_x() + bar.get_width()/2,
+             bar.get_height()/2,
+             f'{score:.2f}', ha='center', va='bottom')
+plt.show()
+
+
