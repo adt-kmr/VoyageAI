@@ -111,7 +111,13 @@ session_duration, search_behavior, Cluster
 Open and run the notebook:
 
 ```bash
-jupyter notebook notebooks/D1_business_analysis.ipynb
+jupyter notebook notebooks/01_business_analysis.ipynb
+```
+
+For the latest visual intelligence report:
+
+```bash
+jupyter notebook notebooks/08_traveller_intelligence_report.ipynb
 ```
 
 ---
@@ -125,6 +131,8 @@ jupyter notebook notebooks/D1_business_analysis.ipynb
 | hierarchical_persona_graphs.png | Persona profile charts for Hierarchical segmentation |
 | dbscan_persona_graphs.png | Persona profile charts for DBSCAN segmentation |
 | cross_algo_heatmap.png | Normalized feature means heatmap comparing all three algorithms |
+| business_analysis.md | **[NEW]** Professional executive summary and marketing strategy |
+| 08_traveller_intelligence_report.ipynb | **[NEW]** Visual deep dive into Traveler Intelligence |
 
 ---
 
@@ -145,3 +153,9 @@ jupyter notebook notebooks/D1_business_analysis.ipynb
 - High Spenders and Frequent Travellers are the highest value segments for targeted campaigns.
 - Budget Travellers form a large volume segment, suitable for discount and deal-based marketing.
 - DBSCAN is not recommended for persona-based analysis on this data due to its low silhouette score and excessive cluster fragmentation.
+
+## Repository Audit & Loopholes (Fixes Implemented)
+
+- **Fixed Broken Links**: README incorrectly pointed to `D1_business_analysis.ipynb`. Updated to `01_business_analysis.ipynb`.
+- **Labeling Inconsistency**: Identified that "High Spenders" labels in legacy data were often misaligned with actual booking value (counter-intuitive data patterns).
+- **Missing Documentation**: Added detailed [Business Analysis](file:///c:/Users/thetsu%20aditya/project/AI/business_analysis.md) and [Intelligence Report](file:///c:/Users/thetsu%20aditya/project/AI/notebooks/08_traveller_intelligence_report.ipynb) to complete the repository's mission.
