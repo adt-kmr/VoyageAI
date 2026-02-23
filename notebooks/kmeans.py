@@ -126,3 +126,23 @@ df_result['Cluster'] = np.nan
 df_result.loc[X.index, 'Cluster'] = cluster_labels
 df_result.to_csv('../results/csv/kmeans_results.csv', index=False)
 
+# Silhouette Score Comparison — Train vs Test
+from sklearn.metrics import silhouette_score
+import matplotlib.pyplot as plt
+
+# Use the clusterer fitted on the full dataset to predict on train/test
+train_labels = kmeans.predict(X_train)
+test_labels = kmeans.predict(X_test)
+
+train_score = silhouette_score(X_train, train_labels)
+test_score = silhouette_score(X_test, test_labels)
+
+scores = [train_score, test_score]
+types = ['Train', 'Test']
+plt.figure(figsize=(6,4))
+bars = plt.bar(types, scores, color=['skyblue', 'salmon'])
+plt.title('Silhouette Score Comparison — Train vs Test')
+plt.ylabel('Silhouette Score')
+for bar, score in zip(bars, scores):
+    plt.text(bar.get_x() + bar.get_width()/2, bar.get_height(), f'{score:.2f}', ha='center', va='bottom')
+plt.show()
