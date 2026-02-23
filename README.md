@@ -57,23 +57,39 @@ Hierarchical clustering performed best on this dataset based on silhouette score
 ## Project Structure
 
 ```
-project/
+AIProject/
 │
-├── notebooks/
-│   └── D1_business_analysis.ipynb
+├── .venv/                     # Python virtual environment
+├── data/                      # Dataset folder
+│   ├── processed/             # Processed datasets for modeling
+│   │   └── finalclusteringdataset.csv
+│   └── raw/                   # Raw original datasets
+│       └── dataset.csv
 │
-├── results/
-│   ├── csv/
-│   │   ├── kmeans_results.csv
+├── notebooks/                 # Jupyter notebooks for analysis and modeling
+│   ├── 01_business_analysis.ipynb
+│   ├── 02_data_generation.ipynb
+│   ├── 03_preprocessing.ipynb
+│   ├── 04_kmeans_clustering.ipynb
+│   ├── 05_dbscan_clustering.ipynb
+│   ├── 06_hierarchical_clustering.ipynb
+│   └── 07_gmm_clustering.ipynb
+│
+├── results/                   # Output results
+│   ├── csv/                   # CSV files for clustering results
 │   │   ├── dbscan_results.csv
-│   │   └── hierarchical_results.csv
-│   │
-│   ├── algo_comparison.png
-│   ├── kmeans_persona_graphs.png
-│   ├── hierarchical_persona_graphs.png
-│   ├── dbscan_persona_graphs.png
-│   └── cross_algo_heatmap.png
-```
+│   │   ├── hierarchical_results.csv
+│   │   └── kmeans_results.csv
+│   └── plots/                  # Graphs and visualizations
+│       ├── algo_comparison.png
+│       ├── cross_algo_heatmap.png
+│       ├── dbscan_persona_graphs.png
+│       ├── hierarchical_persona_graphs.png
+│       └── kmeans_persona_graphs.png
+│
+├── .gitignore                 # Git ignore file
+├── README.md                  # Project documentation
+└── requirements.txt           # Python dependencies
 
 ---
 
