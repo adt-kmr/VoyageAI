@@ -14,7 +14,7 @@ venv/
 .ipynb_checkpoints/
 *.ipynb_checkpoints
 
-# Data (large files - optional)
+# Data 
 # data/raw/*.csv
 
 # OS
