@@ -12,7 +12,7 @@ The notebook loads clustering results from three algorithms, maps each traveller
 
 ## Dataset
 
-- Total records: ~1,00,000 travellers
+- Total records: more than 1,00,000 travellers
 - Source: Pre-processed clustering output CSVs
 
 ---
